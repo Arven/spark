@@ -10,12 +10,14 @@ still correct, but the method which you call functions such as "get"
 and "post" to add new routes will vary depending on whether you are
 using a version of Java that supports lambda expressions.
 
+```java
         get("/hello", new Route() {
             @Override
             public Object handle(Request req, Response res) {
                 return "Hello Plain Text";
             }
         });
+```
 
 For more detailed documentation please go to: http://sparkjava.com
 

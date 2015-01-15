@@ -1,16 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>
     <groupId>com.github.arven.sparkjava</groupId>
-    <artifactId>spark-core</artifactId>
+    <artifactId>spark-core-five</artifactId>
     <packaging>jar</packaging>
     <version>2.2-SNAPSHOT</version>
-    <name>Spark</name>
+    <name>SparkFive</name>
     <description>A Sinatra inspired java web framework</description>
     <url>http://www.sparkjava.com</url>
     <licenses>
@@ -21,12 +16,19 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:git:git@github.com:perwendel/spark.git</connection>
-        <developerConnection>scm:git:git@github.com:perwendel/spark.git</developerConnection>
-        <url>scm:git:git@github.com:perwendel/spark.git</url>
+        <connection>scm:git:git@github.com:Arven/spark.git</connection>
+        <developerConnection>scm:git:git@github.com:Arven/spark.git</developerConnection>
+        <url>scm:git:git@github.com:Arven/spark.git</url>
     </scm>
     <developers>
     </developers>
+    
+    <distributionManagement>
+        <repository>
+            <id>orasi-maven</id>
+            <url>ftp://localhost/maven2</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <jetty.version>9.0.2.v20130417</jetty.version>
@@ -161,5 +163,13 @@
                 </configuration>
             </plugin>
         </plugins>
+        <extensions>
+            <!-- Enabling the use of FTP -->
+            <extension>
+              <groupId>org.apache.maven.wagon</groupId>
+               <artifactId>wagon-ftp</artifactId>
+               <version>2.8</version>
+            </extension>
+        </extensions>
     </build>
 </project>

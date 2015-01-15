@@ -9,10 +9,6 @@ import org.slf4j.LoggerFactory;
 
 import spark.util.SparkTestUtil;
 
-import static spark.Spark.after;
-import static spark.Spark.before;
-import static spark.Spark.post;
-
 public class BodyAvailabilityTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BodyAvailabilityTest.class);
@@ -43,21 +39,30 @@ public class BodyAvailabilityTest {
         beforeBody = null;
         routeBody = null;
         afterBody = null;
-
-        before("/hello", (req, res) -> {
-            LOGGER.debug("before-req.body() = " + req.body());
-            beforeBody = req.body();
+                
+        Spark.before("/hello", new Filter(){
+            @Override
+            public void handle(Request request, Response response) throws Exception {
+                LOGGER.debug("before-req.body() = " + request.body());
+                beforeBody = request.body();
+            }
         });
 
-        post("/hello", (req, res) -> {
-            LOGGER.debug("get-req.body() = " + req.body());
-            routeBody = req.body();
-            return req.body();
+        Spark.post("/hello", new Route() {
+            @Override
+            public Object handle(Request req, Response res) throws Exception {
+                LOGGER.debug("get-req.body() = " + req.body());
+                routeBody = req.body();
+                return req.body();
+            }
         });
-
-        after("/hello", (req, res) -> {
-            LOGGER.debug("after-before-req.body() = " + req.body());
-            afterBody = req.body();
+        
+        Spark.after("/hello", new Filter(){
+            @Override
+            public void handle(Request req, Response res) throws Exception {
+                LOGGER.debug("after-before-req.body() = " + req.body());
+                afterBody = req.body();
+            }
         });
 
         try {

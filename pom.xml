@@ -6,7 +6,7 @@
         <artifactId>oss-parent</artifactId>
         <version>7</version>
     </parent>
-    <groupId>com.sparkjava</groupId>
+    <groupId>com.github.arven.sparkjava</groupId>
     <artifactId>spark-core</artifactId>
     <packaging>jar</packaging>
     <version>2.2-SNAPSHOT</version>
@@ -52,6 +52,12 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
             <version>${jetty.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-util</artifactId>
+            <version>${jetty.version}</version>            
         </dependency>
 
         <dependency>
@@ -113,7 +119,7 @@
                 <version>3.1</version>
                 <configuration>
                     <source>1.8</source>
-                    <target>1.8</target>
+                    <target>1.5</target>
                     <optimize>true</optimize>
                     <debug>true</debug>
                 </configuration>
@@ -131,7 +137,7 @@
                         <configuration>
                             <rules>
                                 <requireJavaVersion>
-                                    <version>[1.8,)</version>
+                                    <version>[1.5,)</version>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>

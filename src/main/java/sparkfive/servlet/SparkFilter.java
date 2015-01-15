@@ -138,7 +138,7 @@ public class SparkFilter implements Filter {
                     ClassPathResource resource = new ClassPathResource(folder);
                     if (resource.getFile().isDirectory()) {
                         if (staticResourceHandlers == null) {
-                            staticResourceHandlers = new ArrayList<>();
+                            staticResourceHandlers = new ArrayList<AbstractResourceHandler>();
                         }
                         staticResourceHandlers.add(new ClassPathResourceHandler(folder, "index.html"));
                         LOG.info("StaticResourceHandler configured with folder = " + folder);
@@ -165,7 +165,7 @@ public class SparkFilter implements Filter {
                     ExternalResource resource = new ExternalResource(folder);
                     if (resource.getFile().isDirectory()) {
                         if (staticResourceHandlers == null) {
-                            staticResourceHandlers = new ArrayList<>();
+                            staticResourceHandlers = new ArrayList<AbstractResourceHandler>();
                         }
                         staticResourceHandlers.add(new ExternalResourceHandler(folder, "index.html"));
                         LOG.info("External StaticResourceHandler configured with folder = " + folder);

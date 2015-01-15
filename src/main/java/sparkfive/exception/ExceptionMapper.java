@@ -46,7 +46,7 @@ public class ExceptionMapper {
      * Class constructor
      */
     public ExceptionMapper() {
-        this.exceptionMap = new HashMap<>();
+        this.exceptionMap = new HashMap<Class<? extends Exception>, ExceptionHandlerImpl>();
     }
 
     /**

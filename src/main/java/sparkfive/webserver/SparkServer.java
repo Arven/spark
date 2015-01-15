@@ -16,6 +16,7 @@
  */
 package sparkfive.webserver;
 
+import com.google.common.io.Closer;
 import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -70,9 +71,9 @@ public class SparkServer {
                        String keystorePassword, String truststoreFile,
                        String truststorePassword, String staticFilesFolder,
                        String externalFilesFolder) {
-
         if (port == 0) {
-            try (ServerSocket s = new ServerSocket(0)) {
+            try {
+                ServerSocket s = new ServerSocket(0);
                 port = s.getLocalPort();
             } catch (IOException e) {
                 logger.error("Could not get first available port (port set to 0), using default: {}", SPARK_DEFAULT_PORT);

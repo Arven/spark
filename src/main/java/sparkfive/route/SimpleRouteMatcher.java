@@ -97,7 +97,7 @@ public class SimpleRouteMatcher {
      * @return the targets
      */
     public List<RouteMatch> findTargetsForRequestedRoute(HttpMethod httpMethod, String path, String acceptType) {
-        List<RouteMatch> matchSet = new ArrayList<>();
+        List<RouteMatch> matchSet = new ArrayList<RouteMatch>();
         List<RouteEntry> routeEntries = findTargetsForRequestedRoute(httpMethod, path);
 
         for (RouteEntry routeEntry : routeEntries) {
@@ -139,7 +139,7 @@ public class SimpleRouteMatcher {
 
     //can be cached? I don't think so.
     private Map<String, RouteEntry> getAcceptedMimeTypes(List<RouteEntry> routes) {
-        Map<String, RouteEntry> acceptedTypes = new HashMap<>();
+        Map<String, RouteEntry> acceptedTypes = new HashMap<String, RouteEntry>();
 
         for (RouteEntry routeEntry : routes) {
             if (!acceptedTypes.containsKey(routeEntry.acceptedType)) {

@@ -26,7 +26,8 @@ able to run multiple servers in one application, or otherwise do not
 like the idea of static objects, you may import SparkInstance alone.
 
 ```java
-	import sparkfive.SparkInstance;
+	import sparkfive.*;
+
 	in.get("/hello", (req, res) -> { return "Hello World!" });
 ```
 

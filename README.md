@@ -1,6 +1,24 @@
 Spark - a Sinatra inspired web framework
 ==============================================
 
+About this version
+------------------
+
+This is a modified version of perwendel's Spark web framework, which
+is designed to be more compatible. The documentation on this page is
+still correct, but the method which you call functions such as "get"
+and "post" to add new routes will vary depending on whether you are
+using a version of Java that supports lambda expressions.
+
+```java
+        get("/hello", new Route() {
+            @Override
+            public Object handle(Request req, Response res) {
+                return "Hello Plain Text";
+            }
+        });
+```
+
 For more detailed documentation please go to: http://sparkjava.com
 
 NEWS: Spark 2.1 is now available on Maven central!!! :

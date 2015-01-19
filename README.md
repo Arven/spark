@@ -28,6 +28,7 @@ like the idea of static objects, you may import SparkInstance alone.
 ```java
 	import sparkfive.*;
 
+        SparkInstance in = new SparkInstance();
 	in.get("/hello", (req, res) -> { return "Hello World!" });
 ```
 

@@ -19,6 +19,17 @@ using a version of Java that supports lambda expressions.
         });
 ```
 
+The first method of deployment is using the embedded Jetty server and
+static calls to "get", "post", etc. The web server will automatically
+start on the default port 4567. Alternatively, if you would like to be
+able to run multiple servers in one application, or otherwise do not
+like the idea of static objects, you may import SparkInstance alone.
+
+```java
+	import sparkfive.SparkInstance;
+	in.get("/hello", (req, res) -> { return "Hello World!" });
+```
+
 For more detailed documentation please go to: http://sparkjava.com
 
 NEWS: Spark 2.1 is now available on Maven central!!! :

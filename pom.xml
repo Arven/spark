@@ -4,7 +4,7 @@
     <groupId>com.github.arven.sparkjava</groupId>
     <artifactId>spark-core-five</artifactId>
     <packaging>jar</packaging>
-    <version>2.2b-SNAPSHOT</version>
+    <version>2.2c</version>
     <name>SparkFive</name>
     <description>A Sinatra inspired java web framework</description>
     <url>http://www.sparkjava.com</url>

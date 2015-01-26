@@ -1,16 +1,14 @@
-package spark.servlet;
+package sparkfive.servlet;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import sparkfive.Filter;
+import sparkfive.Request;
+import sparkfive.Response;
+import sparkfive.Route;
 
-import static spark.Spark.after;
-import static spark.Spark.before;
-import static spark.Spark.externalStaticFileLocation;
-import static spark.Spark.get;
-import static spark.Spark.halt;
-import static spark.Spark.post;
-import static spark.Spark.staticFileLocation;
+import static sparkfive.Spark.*;
 
 public class MyApp implements SparkApplication {
 
@@ -29,30 +27,47 @@ public class MyApp implements SparkApplication {
             e.printStackTrace();
         }
 
-        before("/protected/*", (request, response) -> {
-            halt(401, "Go Away!");
+        before("/protected/*", new Filter(){
+            @Override
+            public void handle(Request request, Response response) throws Exception {
+                halt(401, "Go away!");
+            }
         });
 
-        get("/hi", (request, response) -> {
-            return "Hello World!";
+        get("/hi", new Route(){
+            @Override
+            public Object handle(Request request, Response response) throws Exception {
+                return "Hello World!";
+            }
         });
 
-        get("/:param", (request, response) -> {
-            return "echo: " + request.params(":param");
+        get("/:param", new Route(){
+            @Override
+            public Object handle(Request request, Response response) throws Exception {
+                return "echo: " + request.params(":param");
+            }
         });
 
-        get("/", (request, response) -> {
-            return "Hello Root!";
+        get("/", new Route(){
+            @Override
+            public Object handle(Request request, Response response) throws Exception {
+                return "Hello Root!";
+            }
         });
 
-        post("/poster", (request, response) -> {
-            String body = request.body();
-            response.status(201); // created
-            return "Body was: " + body;
+        post("/poster", new Route(){
+            @Override
+            public Object handle(Request request, Response response) throws Exception {
+                response.status(201);
+                return "Body was: " + request.body();
+            }
         });
 
-        after("/hi", (request, response) -> {
-            response.header("after", "foobar");
+        after("/hi", new Filter(){
+            @Override
+            public void handle(Request request, Response response) throws Exception {
+                response.header("after", "foobar");
+            }
         });
 
         try {
